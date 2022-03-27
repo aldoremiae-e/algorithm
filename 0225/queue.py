@@ -2,7 +2,7 @@
     # rear = rear + 1
     # q[rear] = item
 # 디큐 - 삭제
-    # front = front -1
+    # front = front + 1
     # q[front]
 # 공백 및 포화상태
     # front == rear  공백
