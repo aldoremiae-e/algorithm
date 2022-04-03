@@ -1,27 +1,26 @@
+# 순열
 def nPr(i, N, s):
     global minV
-    global re
+
     if i == N:
         s += arr[p[N-1]][0]
-        re.append(s)
         if minV > s:
             minV = s
-    elif s >= minV:     # 굉장히 빨라짐
+    elif s >= minV:
         return
     else:
         for j in range(i, N):
-            p[i], p[j] = p[j], p[i] #i번째 방문지 결정
-            nPr(i+1, N, s+arr[p[i-1]][p[i]])
             p[i], p[j] = p[j], p[i]
-    return
+            nPr(i+1, N, s + arr[p[i-1]][p[i]])
+            p[i], p[j] = p[j], p[i]
+
 
 T = int(input())
 for tc in range(1, T+1):
     N = int(input())
     arr = [list(map(int, input().split())) for _ in range(N)]
-
+    minV = 99999
     p = [i for i in range(N)]
-    re = []
-    minV = 999999
     nPr(1, N, 0)
+
     print(f'#{tc} {minV}')
